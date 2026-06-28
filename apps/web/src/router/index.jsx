@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ProtectedRoute from "../components/auth/ProtectedRoute";
 
+import LandingPage from "../pages/LandingPage/LandingPage"; 
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import DashboardPage from "../pages/DashboardPage";
@@ -37,13 +38,20 @@ export default function AppRouter() {
         <Route
           path="/"
           element={
+            <LandingPage />
+          }
+        />
+
+        <Route
+          path="/dashboard"
+          element={
             <ProtectedRoute>
-              <DashboardPage />
+            <DashboardPage />
             </ProtectedRoute>
           }
         />
 
-        <Route path="/app" element={<Navigate to="/" replace />} />
+        <Route path="/app" element={<Navigate to="/dashboard" replace />} />
 
         <Route
           path="/communities/new"
